@@ -32,6 +32,33 @@ namespace Vista
             }
             errorProvider1.Clear();
 
+            //Validar en la base de datos
+
+
+            //Montramos el Menu
+
+            Menu menuFormulario = new Menu();
+            Hide();
+            menuFormulario.Show();
+
+
+
+        }
+
+        private void MostrarContraseñaButton_Click(object sender, EventArgs e)
+        {
+            if (ContraseñaTextBox.PasswordChar == '*')
+            {
+                ContraseñaTextBox.PasswordChar = '\0';
+            }
+            else
+            {
+                ContraseñaTextBox.PasswordChar = '*';
+            }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
 
         }
     }
