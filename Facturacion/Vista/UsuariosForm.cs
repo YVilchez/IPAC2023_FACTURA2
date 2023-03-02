@@ -1,4 +1,6 @@
-﻿using Entidades;
+﻿using Datos;
+using Entidades;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,6 +14,10 @@ namespace Vista
         }
         string tipoOperacion;
 
+        DataTable dt = new DataTable();
+        UsuarioDB UsuarioDB = new UsuarioDB();
+        Usuario user = new Usuario();
+
         private void HabilitarControles()
         {
             CodigoTextBox.Enabled = true;
@@ -23,9 +29,10 @@ namespace Vista
             AdjuntarFotoButton.Enabled = true;
             GuardarButton.Enabled = true;
             CancelarButton.Enabled = true;
+            ModificarButton.Enabled = false;
         }
 
-        private void DesabilitarControles()
+        private void DeshabilitarControles()
         {
             CodigoTextBox.Enabled = false;
             NombreTextBox.Enabled = false;
@@ -36,6 +43,7 @@ namespace Vista
             AdjuntarFotoButton.Enabled = false;
             GuardarButton.Enabled = false;
             CancelarButton.Enabled = false;
+            ModificarButton.Enabled = true;
         }
 
         private void LimpiarControles()
@@ -47,7 +55,6 @@ namespace Vista
             RolComboBox.Text = "";
             EstaActivoCheckBox.Checked = false;
             FotoPictureBox.Image = null;
-
         }
 
         private void NuevoButton_Click(object sender, System.EventArgs e)
@@ -59,7 +66,7 @@ namespace Vista
 
         private void CancelarButton_Click(object sender, System.EventArgs e)
         {
-            DesabilitarControles();
+            DeshabilitarControles();
             LimpiarControles();
         }
 
@@ -97,8 +104,6 @@ namespace Vista
                 }
                 errorProvider1.Clear();
 
-                Usuario user = new Usuario();
-
                 user.CodigoUsuario = CodigoTextBox.Text;
                 user.Nombre = NombreTextBox.Text;
                 user.Contraseña = ContraseñaTextBox.Text;
@@ -115,7 +120,19 @@ namespace Vista
 
                 //Insertar en la base de datos
 
+                bool inserto = UsuarioDB.Insertar(user);
 
+                if (inserto)
+                {
+                    LimpiarControles();
+                    DeshabilitarControles();
+                    TraerUsuarios();
+                    MessageBox.Show("Registro Guardado");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo guardar el registro");
+                }
             }
             else if (tipoOperacion == "Modificar")
             {
@@ -138,5 +155,19 @@ namespace Vista
                 FotoPictureBox.Image = Image.FromFile(dialog.FileName);
             }
         }
+
+        private void UsuariosForm_Load(object sender, System.EventArgs e)
+        {
+            TraerUsuarios();
+        }
+
+        private void TraerUsuarios()
+        {
+            dt = UsuarioDB.DevolverUsuarios();
+
+            UsuariosDataGridView.DataSource = dt;
+
+        }
+
     }
 }

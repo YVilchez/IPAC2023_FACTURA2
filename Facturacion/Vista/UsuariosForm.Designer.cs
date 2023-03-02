@@ -198,7 +198,6 @@
             // 
             // ModificarButton
             // 
-            this.ModificarButton.Enabled = false;
             this.ModificarButton.Location = new System.Drawing.Point(310, 267);
             this.ModificarButton.Name = "ModificarButton";
             this.ModificarButton.Size = new System.Drawing.Size(86, 33);
@@ -241,6 +240,8 @@
             // 
             // UsuariosDataGridView
             // 
+            this.UsuariosDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UsuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsuariosDataGridView.Location = new System.Drawing.Point(0, 306);
             this.UsuariosDataGridView.Name = "UsuariosDataGridView";
@@ -277,9 +278,10 @@
             this.Controls.Add(this.CodigoTextBox);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UsuariosForm";
             this.Text = "Usuarios";
+            this.Load += new System.EventHandler(this.UsuariosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsuariosDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
