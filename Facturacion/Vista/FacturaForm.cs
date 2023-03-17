@@ -17,6 +17,7 @@ namespace Vista
         Producto miProducto = null;
         ProductoDB productoDB = new ProductoDB();
         List<DetalleFactura> listaDetalles = new List<DetalleFactura>();
+        FacturaDB facturaDB = new FacturaDB();
         decimal subTotal = 0;
         decimal isv = 0;
         decimal totalAPagar = 0;
@@ -65,6 +66,7 @@ namespace Vista
             {
                 miProducto = null;
                 DescripcionProductoTextBox.Clear();
+                ExistenciaTextBox.Clear();
             }
         }
 
@@ -88,6 +90,7 @@ namespace Vista
                 detalle.Cantidad = Convert.ToInt32(CantidadTextBox.Text);
                 detalle.Precio = Convert.ToDecimal(miProducto.Precio);
                 detalle.Total = Convert.ToInt32(CantidadTextBox.Text) * miProducto.Precio;
+                detalle.Descripcion = miProducto.Descripcion;
 
                 subTotal += detalle.Total;
                 isv = subTotal * 0.15M;
@@ -100,7 +103,61 @@ namespace Vista
                 SubTotalTextBox.Text = subTotal.ToString();
                 ISVTextBox.Text = isv.ToString();
                 TotalTextBox.Text = totalAPagar.ToString();
+
+                miProducto = null;
+                CodigoProductoTextBox.Clear();
+                DescripcionProductoTextBox.Clear();
+                ExistenciaTextBox.Clear();
+                CantidadTextBox.Clear();
+                CodigoProductoTextBox.Focus();
             }
         }
+
+        private void GuardarButton_Click(object sender, EventArgs e)
+        {
+            Factura miFactura = new Factura();
+            miFactura.Fecha = FechaDateTimePicker.Value;
+            miFactura.CodigoUsuario = System.Threading.Thread.CurrentPrincipal.Identity.Name;
+            miFactura.IdentidadCliente = miCliente.Identidad;
+            miFactura.SubTotal = subTotal;
+            miFactura.ISV = isv;
+            miFactura.Descuento = descuento;
+            miFactura.Total = totalAPagar;
+
+            bool inserto = facturaDB.Guardar(miFactura, listaDetalles);
+
+            if (inserto)
+            {
+                LimpiarControles();
+                IdentidadTextBox.Focus();
+                MessageBox.Show("Factura registrada exitosamente");
+            }
+            else
+                MessageBox.Show("No se pudo registrar la factura");
+        }
+
+        private void LimpiarControles()
+        {
+            miCliente = null;
+            miProducto = null;
+            listaDetalles = null;
+            FechaDateTimePicker.Value = DateTime.Now;
+            IdentidadTextBox.Clear();
+            NombreClienteTextBox.Clear();
+            CodigoProductoTextBox.Clear();
+            DescripcionProductoTextBox.Clear();
+            ExistenciaTextBox.Clear();
+            CantidadTextBox.Clear();
+            DetalleDataGridView.DataSource = null;
+            subTotal = 0;
+            SubTotalTextBox.Clear();
+            isv = 0;
+            ISVTextBox.Clear();
+            descuento = 0;
+            DescuentoTextBox.Clear();
+            totalAPagar = 0;
+            TotalTextBox.Clear();
+        }
+
     }
 }
