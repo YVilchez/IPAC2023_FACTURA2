@@ -8,11 +8,12 @@ namespace Datos
 {
     public class UsuarioDB
     {
-        string cadena = "server=localhost; user=root; database=factura2; password=123456;";
+        string cadena = "server=localhost; user=root; database=factura2; password=1234;";
 
         public Usuario Autenticar(Login login)
         {
             Usuario user = null;
+            //maneja errores, no cierra el proyecto bruscamente 
             try
             {
                 StringBuilder sql = new StringBuilder();
@@ -39,6 +40,8 @@ namespace Datos
                             user.Rol = dr["Rol"].ToString();
                             user.FechaCreacion = Convert.ToDateTime(dr["FechaCreacion"]);
                             user.EstaActivo = Convert.ToBoolean(dr["EstaActivo"]);
+
+                            //Obtiene instancia de valor 
                             if (dr["Foto"].GetType() != typeof(DBNull))
                             {
                                 user.Foto = (byte[])dr["Foto"];
@@ -53,6 +56,7 @@ namespace Datos
             }
             return user;
         }
+        //Ingresar mas USUARIOS 
 
         public bool Insertar(Usuario user)
         {

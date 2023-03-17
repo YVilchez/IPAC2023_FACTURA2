@@ -60,7 +60,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(41, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Código:";
             // 
@@ -69,15 +69,16 @@
             this.CodigoTextBox.Enabled = false;
             this.CodigoTextBox.Location = new System.Drawing.Point(146, 16);
             this.CodigoTextBox.Name = "CodigoTextBox";
-            this.CodigoTextBox.Size = new System.Drawing.Size(302, 22);
+            this.CodigoTextBox.Size = new System.Drawing.Size(302, 30);
             this.CodigoTextBox.TabIndex = 1;
+            this.CodigoTextBox.TextChanged += new System.EventHandler(this.CodigoTextBox_TextChanged);
             // 
             // NombreTextBox
             // 
             this.NombreTextBox.Enabled = false;
             this.NombreTextBox.Location = new System.Drawing.Point(146, 55);
             this.NombreTextBox.Name = "NombreTextBox";
-            this.NombreTextBox.Size = new System.Drawing.Size(302, 22);
+            this.NombreTextBox.Size = new System.Drawing.Size(302, 30);
             this.NombreTextBox.TabIndex = 3;
             // 
             // label2
@@ -85,7 +86,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(41, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.Size = new System.Drawing.Size(87, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nombre:";
             // 
@@ -95,7 +96,7 @@
             this.ContraseñaTextBox.Location = new System.Drawing.Point(146, 94);
             this.ContraseñaTextBox.Name = "ContraseñaTextBox";
             this.ContraseñaTextBox.PasswordChar = '*';
-            this.ContraseñaTextBox.Size = new System.Drawing.Size(302, 22);
+            this.ContraseñaTextBox.Size = new System.Drawing.Size(302, 30);
             this.ContraseñaTextBox.TabIndex = 5;
             // 
             // label3
@@ -103,7 +104,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(41, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 16);
+            this.label3.Size = new System.Drawing.Size(120, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Contraseña:";
             // 
@@ -112,7 +113,7 @@
             this.CorreoTextBox.Enabled = false;
             this.CorreoTextBox.Location = new System.Drawing.Point(146, 132);
             this.CorreoTextBox.Name = "CorreoTextBox";
-            this.CorreoTextBox.Size = new System.Drawing.Size(302, 22);
+            this.CorreoTextBox.Size = new System.Drawing.Size(302, 30);
             this.CorreoTextBox.TabIndex = 7;
             // 
             // label4
@@ -120,7 +121,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(41, 132);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 16);
+            this.label4.Size = new System.Drawing.Size(78, 25);
             this.label4.TabIndex = 6;
             this.label4.Text = "Correo:";
             // 
@@ -129,7 +130,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(41, 178);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 16);
+            this.label5.Size = new System.Drawing.Size(46, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "Rol:";
             // 
@@ -143,7 +144,7 @@
             "Usuario"});
             this.RolComboBox.Location = new System.Drawing.Point(146, 170);
             this.RolComboBox.Name = "RolComboBox";
-            this.RolComboBox.Size = new System.Drawing.Size(302, 24);
+            this.RolComboBox.Size = new System.Drawing.Size(302, 33);
             this.RolComboBox.TabIndex = 9;
             // 
             // label6
@@ -151,7 +152,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(41, 225);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 16);
+            this.label6.Size = new System.Drawing.Size(116, 25);
             this.label6.TabIndex = 10;
             this.label6.Text = "Esta Activo:";
             // 
@@ -161,7 +162,7 @@
             this.EstaActivoCheckBox.Enabled = false;
             this.EstaActivoCheckBox.Location = new System.Drawing.Point(146, 225);
             this.EstaActivoCheckBox.Name = "EstaActivoCheckBox";
-            this.EstaActivoCheckBox.Size = new System.Drawing.Size(15, 14);
+            this.EstaActivoCheckBox.Size = new System.Drawing.Size(22, 21);
             this.EstaActivoCheckBox.TabIndex = 11;
             this.EstaActivoCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -245,6 +246,7 @@
             this.UsuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsuariosDataGridView.Location = new System.Drawing.Point(0, 306);
             this.UsuariosDataGridView.Name = "UsuariosDataGridView";
+            this.UsuariosDataGridView.RowHeadersWidth = 62;
             this.UsuariosDataGridView.Size = new System.Drawing.Size(818, 236);
             this.UsuariosDataGridView.TabIndex = 19;
             // 
@@ -254,7 +256,7 @@
             // 
             // UsuariosForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 542);
             this.Controls.Add(this.UsuariosDataGridView);

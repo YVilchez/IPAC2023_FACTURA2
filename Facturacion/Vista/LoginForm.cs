@@ -40,6 +40,9 @@ namespace Vista
             Usuario usuario = new Usuario();
             UsuarioDB usuarioDB = new UsuarioDB();
 
+
+
+
             usuario = usuarioDB.Autenticar(login);
 
             if (usuario != null)

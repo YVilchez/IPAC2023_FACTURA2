@@ -171,6 +171,7 @@ namespace Vista
         private void ModificarButton_Click(object sender, System.EventArgs e)
         {
             tipoOperacion = "Modificar";
+            //optiene fila seleccionada
             if (UsuariosDataGridView.SelectedRows.Count > 0)
             {
                 CodigoTextBox.Text = UsuariosDataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString();
@@ -246,5 +247,11 @@ namespace Vista
                 MessageBox.Show("Debe seleccionar un registro");
             }
         }
+
+        private void CodigoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+ 
