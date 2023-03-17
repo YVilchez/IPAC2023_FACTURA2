@@ -55,11 +55,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="ClienteForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClienteForm.Designer.cs">
       <DependentUpon>ClienteForm.cs</DependentUpon>
+=======
+    <Compile Include="BuscarClienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarClienteForm.Designer.cs">
+      <DependentUpon>BuscarClienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarProductoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarProductoForm.Designer.cs">
+      <DependentUpon>BuscarProductoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FacturaForm.Designer.cs">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+>>>>>>> 63916699f074ac6b4d2f2469fd30ba1a4333d2c3
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -87,8 +107,19 @@
     <Compile Include="UsuariosForm.Designer.cs">
       <DependentUpon>UsuariosForm.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <EmbeddedResource Include="ClienteForm.resx">
       <DependentUpon>ClienteForm.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="BuscarClienteForm.resx">
+      <DependentUpon>BuscarClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarProductoForm.resx">
+      <DependentUpon>BuscarProductoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FacturaForm.resx">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+>>>>>>> 63916699f074ac6b4d2f2469fd30ba1a4333d2c3
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
