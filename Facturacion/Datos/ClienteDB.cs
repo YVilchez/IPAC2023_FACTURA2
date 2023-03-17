@@ -17,14 +17,15 @@ namespace Datos
             {
                 StringBuilder sql = new StringBuilder();
                 sql.Append(" SELECT * FROM cliente WHERE Identidad = @Identidad; ");
+
                 using (MySqlConnection _conexion = new MySqlConnection(cadena))
                 {
                     _conexion.Open();
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
                         comando.CommandType = CommandType.Text;
-                        //=============================================================================================
                         comando.Parameters.Add("@Identidad", MySqlDbType.VarChar, 25).Value = identidad.Identidad;
+                        comando.Parameters.Add("@Identidad", MySqlDbType.VarChar, 25).Value = identidad;
 
 
                         MySqlDataReader dr = comando.ExecuteReader();
@@ -43,13 +44,14 @@ namespace Datos
                     }
                 }
             }
+
             catch (System.Exception ex)
             {
             }
             return cliente;
         }
 
-        public bool Insertar(Cliente user)
+        public bool Insertar(Cliente cliente)
         {
             bool inserto = false;
             try
@@ -63,13 +65,13 @@ namespace Datos
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
                         comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Identidad", MySqlDbType.VarChar, 25).Value = user.Identidad;
-                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = user.Nombre;
-                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar, 15).Value = user.Telefono;
-                        comando.Parameters.Add("@Correo", MySqlDbType.VarChar, 45).Value = user.Correo;
-                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 100).Value = user.Direccion;
-                        comando.Parameters.Add("@FechaNacimiento", MySqlDbType.DateTime).Value = user.FechaNacimiento;
-                        comando.Parameters.Add("@EstaActivo", MySqlDbType.Bit).Value = user.EstaActivo;
+                        comando.Parameters.Add("@Identidad", MySqlDbType.VarChar, 25).Value = cliente.Identidad;
+                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = cliente.Nombre;
+                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar, 15).Value = cliente.Telefono;
+                        comando.Parameters.Add("@Correo", MySqlDbType.VarChar, 45).Value = cliente.Correo;
+                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 100).Value = cliente.Direccion;
+                        comando.Parameters.Add("@FechaNacimiento", MySqlDbType.DateTime).Value = cliente.FechaNacimiento;
+                        comando.Parameters.Add("@EstaActivo", MySqlDbType.Bit).Value = cliente.EstaActivo;
                         comando.ExecuteNonQuery();
                         inserto = true;
 
@@ -81,7 +83,8 @@ namespace Datos
             }
             return inserto;
         }
-        public bool Editar(Cliente user)
+
+        public bool Editar(Cliente cliente)
         {
             bool edito = false;
             try
@@ -97,16 +100,15 @@ namespace Datos
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
                         comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Identidad", MySqlDbType.VarChar, 25).Value = user.Identidad;
-                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = user.Nombre;
-                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar, 15).Value = user.Telefono;
-                        comando.Parameters.Add("@Correo", MySqlDbType.VarChar, 45).Value = user.Correo;
-                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 100).Value = user.Direccion;
-                        comando.Parameters.Add("@FechaNacimiento", MySqlDbType.DateTime).Value = user.FechaNacimiento;
-                        comando.Parameters.Add("@EstaActivo", MySqlDbType.Bit).Value = user.EstaActivo;
+                        comando.Parameters.Add("@Identidad", MySqlDbType.VarChar, 25).Value = cliente.Identidad;
+                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = cliente.Nombre;
+                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar, 15).Value = cliente.Telefono;
+                        comando.Parameters.Add("@Correo", MySqlDbType.VarChar, 45).Value = cliente.Correo;
+                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 100).Value = cliente.Direccion;
+                        comando.Parameters.Add("@FechaNacimiento", MySqlDbType.DateTime).Value = cliente.FechaNacimiento;
+                        comando.Parameters.Add("@EstaActivo", MySqlDbType.Bit).Value = cliente.EstaActivo;
                         comando.ExecuteNonQuery();
                         edito = true;
-
                     }
                 }
             }
@@ -166,6 +168,8 @@ namespace Datos
             }
             return dt;
         }
+
     }
 }
+
 
